@@ -6,12 +6,18 @@ import WeatherTemperature from "./WeatherTemperature";
 import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherInfo(props) {
+  const timeOffset = props.weatherData.timezone;
+
   return (
     <div className="WeatherInfo">
       <h1>{props.weatherData.name}</h1>
       <ul>
         <li>
-          <FormattedDate date={props.weatherData.date} />
+          <FormattedDate
+            date={props.weatherData.date}
+            timeOffset={timeOffset}
+            searchCity={props.weatherData.name}
+          />
         </li>
         <li className="weatherDescription">{props.weatherData.description}</li>
       </ul>
@@ -36,10 +42,17 @@ export default function WeatherInfo(props) {
           <ul>
             <li>
               Sunrise:
-              <FormattedTimeForSun time={props.weatherData.sunrise} />
+              <FormattedTimeForSun
+                time={props.weatherData.sunrise}
+                timeOffset={timeOffset}
+              />
             </li>
             <li>
-              Sunset: <FormattedTimeForSun time={props.weatherData.sunset} />
+              Sunset:{" "}
+              <FormattedTimeForSun
+                time={props.weatherData.sunset}
+                timeOffset={timeOffset}
+              />
             </li>
             <li>Humidity: {props.weatherData.humidity}%</li>
             <li>Wind: {props.weatherData.wind} km/h</li>

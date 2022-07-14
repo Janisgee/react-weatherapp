@@ -7,6 +7,7 @@ export default function SearchBar(props) {
   const [loaded, setLoaded] = useState(false);
   const [weatherData, setWeatherData] = useState({});
   function displayWeather(response) {
+    console.log(response.data);
     setLoaded(true);
 
     setWeatherData({
@@ -19,6 +20,7 @@ export default function SearchBar(props) {
       icon: response.data.weather[0].icon,
       sunrise: new Date(response.data.sys.sunrise * 1000),
       sunset: new Date(response.data.sys.sunset * 1000),
+      timezone: response.data.timezone * 1000,
     });
   }
 
