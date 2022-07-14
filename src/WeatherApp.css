@@ -1,7 +1,19 @@
+.WeatherApp {
+    padding: 0;
+}
+
+.WeatherApp .openSourced {
+    font-size: 13px;
+}
+
+.WeatherApp .openSourced a {
+    text-decoration: none;
+}
+
 .WeatherApp .container {
     border: 1px solid #dadde1;
     border-radius: 10px;
-    margin: 50px auto;
+    margin: 50px auto 25px;
     max-width: 600px;
     padding: 30px;
 }
@@ -11,23 +23,25 @@
     padding: 0;
 }
 
-.WeatherApp .weather-image {
-    width: 80px;
-    float: left;
-}
-
 .WeatherApp .temperature {
     font-size: 60px;
     font-weight: 600;
     margin: 0 7px;
-    float: left;
+}
+
+.WeatherApp .units .inactive {
+    font-size: 20px;
 }
 
 .WeatherApp .units {
     position: relative;
-    top: 10px;
-    font-size: 20px;
+    top: -35px;
+    font-size: 25px;
     font-weight: 600;
+}
+
+.WeatherApp .units a {
+    text-decoration: none;
 }
 
 .WeatherApp .SearchBar {

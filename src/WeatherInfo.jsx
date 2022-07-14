@@ -1,30 +1,46 @@
 import React from "react";
 import "./WeatherInfo.css";
+import FormattedDate from "./FormattedDate";
+import FormattedTimeForSun from "./FormattedTimeForSun";
+import WeatherTemperature from "./WeatherTemperature";
+import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
       <h1>{props.weatherData.name}</h1>
       <ul>
-        <li></li>
+        <li>
+          <FormattedDate date={props.weatherData.date} />
+        </li>
         <li className="weatherDescription">{props.weatherData.description}</li>
       </ul>
       <div className="row">
-        <div className="col-6 float">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt={props.weatherData.description}
-            className="weather-image"
-          />
-          <span className="temperature">
-            {Math.round(props.weatherData.temperature)}
-          </span>
-          <span className="units">°C | °F</span>
+        <div className="col-6">
+          <div className="clearfix">
+            <div className="float-start">
+              <WeatherIcon
+                code={props.weatherData.icon}
+                description={props.weatherData.description}
+              />
+            </div>
+            <div className="float-start">
+              <WeatherTemperature
+                celsius={props.weatherData.temperature}
+                fahrenheit={props.weatherData.temperature * 1.8 + 32}
+              />
+            </div>
+          </div>
         </div>
         <div className="col-6">
           <ul>
-            <li>Sunrise: {props.weatherData.sunrise}</li>
-            <li>Sunset: {props.weatherData.sunset}</li>
+            <li>
+              Sunrise:
+              <FormattedTimeForSun time={props.weatherData.sunrise} />
+            </li>
+            <li>
+              Sunset: <FormattedTimeForSun time={props.weatherData.sunset} />
+            </li>
             <li>Humidity: {props.weatherData.humidity}%</li>
             <li>Wind: {props.weatherData.wind} km/h</li>
           </ul>

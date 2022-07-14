@@ -8,7 +8,7 @@ export default function SearchBar(props) {
   const [weatherData, setWeatherData] = useState({});
   function displayWeather(response) {
     setLoaded(true);
-    console.log(response);
+
     setWeatherData({
       name: response.data.name,
       description: response.data.weather[0].description,
@@ -16,8 +16,9 @@ export default function SearchBar(props) {
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      sunrise: response.data.sys.sunrise,
-      sunset: response.data.sys.sunset,
+      icon: response.data.weather[0].icon,
+      sunrise: new Date(response.data.sys.sunrise * 1000),
+      sunset: new Date(response.data.sys.sunset * 1000),
     });
   }
 
